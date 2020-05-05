@@ -9,8 +9,4 @@ app.use(authRoutes);
 
 
 
-app.get('/', (req, res)=>{   res.send('They app is running'); });
-
-
-
 app.listen(port, ()=>console.log(`app running on http://localhost:${port}`));
