@@ -11,7 +11,8 @@ const userSchema = new Schema({
     },
     email: { 
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: { 
         type: String,
@@ -22,7 +23,15 @@ const userSchema = new Schema({
         required: true
     },
     userRole: String,
-    _id: Number
+    subjects:[],
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },  
+    lessons: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Tutor'
+    }]
     
 
 },{timestamps:true});
