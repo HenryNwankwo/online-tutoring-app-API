@@ -11,4 +11,6 @@ const categorySchema = new Schema({
     }],
     users: []
 
-});
+},{timestamps: true});
+
+module.exports = mongoose.model('Category', categorySchema);
