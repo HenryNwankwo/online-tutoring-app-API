@@ -4,14 +4,12 @@ const {
     postCategory,
     createSubject,
     getSubjectsInCategory, 
-    getSubjectInCategory
+    getSubjectInCategory, 
+    getHome
 } = require('../controllers/auth');
 
 //Handling GET requests
-router.get('/', (req, res)=>{
-    res.send('The basic route is good');
-
-});
+router.get('/api/v1/', getHome);
 
 router.get('/api/v1/categories', getCategories);
 router.get('/api/v1/categories/:categoryId/subjects', getSubjectsInCategory);

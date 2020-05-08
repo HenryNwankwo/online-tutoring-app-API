@@ -1,6 +1,13 @@
 const Category = require('../models/categories');
 const User = require('../models/users');
 
+
+
+exports.getHome = (req, res, next)=>{
+
+    res.send({message: "Handling POST and GET requests"});
+
+};
 //Getting all categories
 exports.getCategories = (req, res, next)=>{
     
