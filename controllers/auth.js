@@ -2,7 +2,7 @@ const Category = require('../models/categories');
 const User = require('../models/users');
 
 //Getting all categories
-exports.getCategory = (req, res, next)=>{
+exports.getCategories = (req, res, next)=>{
     
     Category.find()
         .then(result => {
@@ -10,6 +10,31 @@ exports.getCategory = (req, res, next)=>{
         }).catch(err => {
             console.log(err);
             res.status(500).json({ "error": error });
+        });
+
+};
+
+//getting all subjects in a category
+exports.getSubjectsInCategory = (req, res, next) => {
+
+    const id = req.params.categoryId;    
+    Category.findById(id)
+        .then(result => {
+
+            if(result){
+                res.status(200).send(result.subjects);
+                return;
+            }
+            if(result.length<=0){ 
+                res.status(404).send({"message":"No entries found!"});
+                return;
+            }            
+
+        }).catch(err => {
+            
+            res.status(500).json({
+                "Message": err.message
+            });
         });
 
 };

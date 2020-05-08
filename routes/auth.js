@@ -1,5 +1,10 @@
 const router = require('express').Router();
-const {getCategory, postCategory, createSubject} = require('../controllers/auth');
+const {
+    getCategories,
+    postCategory,
+    createSubject,
+    getSubjectsInCategory
+} = require('../controllers/auth');
 
 //Handling GET requests
 router.get('/', (req, res)=>{
@@ -7,11 +12,8 @@ router.get('/', (req, res)=>{
 
 });
 
-router.get('/api/v1/categories', getCategory);
-router.get('/api/v1/categories/:id/subjects', (req, res) => {
-    res.send('subject route is working ');
-
-});
+router.get('/api/v1/categories', getCategories);
+router.get('/api/v1/categories/:categoryId/subjects', getSubjectsInCategory);
 router.get('/api/v1/categories/:id/subjects/:id/users?userRole=tutor', (req, res) => {
     res.send('user role route is working ');
 
