@@ -39,6 +39,35 @@ exports.getSubjectsInCategory = (req, res, next) => {
 
 };
 
+//get a subject in a category
+
+exports.getSubjectInCategory = (req, res, next) => {
+
+    const categoryId = req.params.categoryId;
+    const subjectId = req.params.subjectId;
+    Category.findById(categoryId)
+        .then(result => {
+
+            if (result) {
+                res.status(200).send(result.subjects[subjectId]);
+                return;
+            }
+            if (result.length <= 0) {
+                res.status(404).send({
+                    "message": "No entries found!"
+                });
+                return;
+            }
+
+        }).catch(err => {
+
+            res.status(500).json({
+                "Message": err.message
+            });
+        });
+
+};
+
 //adding a new category
 exports.postCategory = (req, res, next) => {
 

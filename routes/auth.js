@@ -3,7 +3,8 @@ const {
     getCategories,
     postCategory,
     createSubject,
-    getSubjectsInCategory
+    getSubjectsInCategory, 
+    getSubjectInCategory
 } = require('../controllers/auth');
 
 //Handling GET requests
@@ -23,10 +24,7 @@ router.get('/api/v1/categories/:id/subjects/users?userRole=tutor', (req, res) =>
 
 });
 
-router.get('/api/v1/categories/:id/subjects/:id/', (req, res) => {
-    res.send('subject id route is working ');
-
-});
+router.get('/api/v1/categories/:categoryId/subjects/:subjectId/', getSubjectInCategory);
 router.get('/api/v1/categories/:id/subjects?search={subjectName}&sort=subjectName&order=asc', (req, res) => {
     res.send('searching subject and sorting route is working ');
 
