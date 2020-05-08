@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const {getCategory, postCategory, createSubject} = require('../controllers/auth');
 
 //Handling GET requests
 router.get('/', (req, res)=>{
@@ -6,10 +7,7 @@ router.get('/', (req, res)=>{
 
 });
 
-router.get('/api/v1/categories', (req, res) => {
-    res.send('Categories route is working ');
-
-});
+router.get('/api/v1/categories', getCategory);
 router.get('/api/v1/categories/:id/subjects', (req, res) => {
     res.send('subject route is working ');
 
@@ -68,15 +66,10 @@ router.post('/api/v1/lessons', (req, res) => {
     res.send('Lesson route is working ');
 
 });
-router.post('/api/v1/categories/:id/subjects/:id/', (req, res) => {
-    res.send('subject id route is working ');
+router.post('/api/v1/categories/:categoryId/subjects/:subjectId/');
+router.post('/api/v1/categories/', postCategory);
 
-});
-
-router.post('/api/v1/categories/:id/subjects/', (req, res) => {
-    res.send('POST subjects route is working ');
-
-});
+router.post('/api/v1/categories/:categoryId/subjects/', createSubject);
 
 router.post('/api/v1/lessons', (req, res) => {
     res.send('POST lessons route is working ');
